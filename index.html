@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>万年历</title>
+		<style type="text/css">
+			select {
+				padding: 0;
+				margin: 10px 0;
+				width: 60px;
+				color: #fff;
+				background-color: #060;
+				text-align: center;
+			}
+			.datetable {
+				border-collapse: collapse;
+				width: 100%;
+			}
+			.datetable td {
+				border: 1px solid #ccc;
+				text-align: center;
+			}
+			.datetable thead {
+				background: #006600;
+			}
+			.datetable thead td {
+				font-size: 14px;
+				color: #fff;
+				text-align: center;
+				vertical-align: middle;
+			}
+			.datetable thead td span {
+				padding: 0 5px;
+			}
+			.datetable tbody td {
+				padding: 5px 3px;
+				font-size: 12px;
+			}
+			.save {
+				background-color: forestgreen;
+			}
+			.save font {
+				color: #FFFFFF;
+			}
+		</style>
+	</head>
+	<body onload="initial();">
+		<table cellpadding="0" cellspacing="0" class="datetable">
+			<thead>
+				<tr>
+					<td colspan="7">
+						<span>公历</span>
+						<!--<select id="SY" name="SY" onchange="changeCld();"></select><span>年</span>
+                    <select id="SM" name="SM" onchange="changeCld();"></select><span>月</span>-->
+						<select id="SY" onchange="changeCld();"></select><span>年</span>
+						<select id="SM" onchange="changeCld();"></select><span>月</span>
+						<span id="GZ"></span>
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr style="background: #eee;">
+					<td width="14.2%">日</td>
+					<td width="14.2%">一</td>
+					<td width="14.2%">二</td>
+					<td width="14.2%">三</td>
+					<td width="14.2%">四</td>
+					<td width="14.2%">五</td>
+					<td>六</td>
+				</tr>
+				<script>
+					var gNum;
+					var html = [];
+					for (i = 0; i < 6; i++) {
+						html.push('<tr align="center">');
+						for (j = 0; j < 7; j++) {
+							gNum = i * 7 + j;
+							html.push('<td id="GD' + gNum + '">');
+							html.push('<font id="SD' + gNum + '"></font><br/>')
+							html.push('<font id="LD' + gNum + '"></font>')
+							html.push('</td>');
+						}
+						html.push('</tr>');
+					}
+					document.write(html.join(""));
+				</script>
+			</tbody>
+		</table>
+		<script src="calendar.js" type="text/javascript"></script>
+	</body>
+</html>
